@@ -38,7 +38,11 @@ namespace SnakeLadderGame
                         Console.WriteLine("Current No Play Position " + playerPosition);
                         break;
                     case LADDER:
-                        playerPosition = Convert.ToInt32(playerPosition + diceValue);
+                        int limit = playerPosition + diceValue;
+                        if(limit <= WINING_POSITION)
+                        {
+                            playerPosition = Convert.ToInt32(playerPosition + diceValue);
+                        }                        
                         Console.WriteLine("Current Ladder Position is " + playerPosition);
                         break;
                     case SNAKE:
