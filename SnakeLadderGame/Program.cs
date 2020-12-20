@@ -9,7 +9,7 @@ namespace SnakeLadderGame
         {
             Console.WriteLine("Welcome to Snake Ladder Game");
             SnakeLadderOperations snakeLadderOperations = new SnakeLadderOperations();
-            snakeLadderOperations.GamePlay();
+            snakeLadderOperations.TwoPlayersGamePlay();
         }
     }
 }
