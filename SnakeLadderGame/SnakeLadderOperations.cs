@@ -11,6 +11,7 @@ namespace SnakeLadderGame
         public const int LADDER = 1;
         public const int SNAKE = 2;
         public const int NO_PLAY = 0;
+        int diceCount = 0;
         static Random random = new Random();
 
         public static int DiceRoll()
@@ -24,6 +25,7 @@ namespace SnakeLadderGame
             int playerPosition = STARTING_POSITION;
             while (playerPosition < WINING_POSITION)
             {
+                diceCount++;
                 int action = random.Next(3);
                 Console.WriteLine("Action Value= "+action);
                 int diceValue = DiceRoll();
@@ -59,6 +61,7 @@ namespace SnakeLadderGame
 
                 }
             }
+            Console.WriteLine("Dice Was Played " + diceCount + " times");
         }
     }
 }
