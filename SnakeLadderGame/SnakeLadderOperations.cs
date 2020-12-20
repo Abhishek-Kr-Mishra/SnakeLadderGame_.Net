@@ -6,43 +6,54 @@ namespace SnakeLadderGame
 {
     class SnakeLadderOperations
     {
-        public int STARTING_POSITION = 0;
-        Random random = new Random();
+        public const int STARTING_POSITION = 0;
+        public int WINING_POSITION = 100;
         public const int LADDER = 1;
         public const int SNAKE = 2;
         public const int NO_PLAY = 0;
+        static Random random = new Random();
 
-        public int DiceRoll()
+        public static int DiceRoll()
         {
-            int diceValue = (random.Next(6) + 1);
+            int diceValue = random.Next(6) + 1;
             return diceValue;
         }
 
-        public void GamePlay(int diceValue)
+        public void GamePlay()
         {
             int playerPosition = STARTING_POSITION;
-            int action = random.Next(3);
-            switch (action)
+            while (playerPosition < WINING_POSITION)
             {
-                case NO_PLAY:
-                    if (playerPosition < 0)
-                    {
-                        playerPosition = STARTING_POSITION;
-                    }
-                    Console.WriteLine("Current Snake Position "+ playerPosition);
-                    break;
-                case LADDER:
-                    playerPosition = playerPosition + diceValue;
-                    Console.WriteLine("Current Ladder Position is " + playerPosition);
-                    break;
-                case SNAKE:
-                    playerPosition = playerPosition - diceValue;
-                    if (playerPosition < 0)
-                    {
-                        playerPosition = STARTING_POSITION;
-                    }
-                    Console.WriteLine("No Play Position " + playerPosition);
-                    break;
+                int action = random.Next(3);
+                Console.WriteLine("Action Value= "+action);
+                int diceValue = DiceRoll();
+                switch (action)
+                {
+                    case NO_PLAY:
+
+                        if (playerPosition < 0)
+                        {
+                            playerPosition = STARTING_POSITION;
+                        }
+                        Console.WriteLine("Current No Play Position " + playerPosition);
+                        break;
+                    case LADDER:
+                        playerPosition = Convert.ToInt32(playerPosition + diceValue);
+                        Console.WriteLine("Current Ladder Position is " + playerPosition);
+                        break;
+                    case SNAKE:
+                        playerPosition = Convert.ToInt32(playerPosition - diceValue); ;
+                        if (playerPosition < 0)
+                        {
+                            playerPosition = STARTING_POSITION;
+                        }
+                        Console.WriteLine("Current Snake Position is " + playerPosition);
+                        break;
+                    default:
+                        Console.WriteLine("Wrong Input");
+                        break;
+
+                }
             }
         }
     }

@@ -9,9 +9,7 @@ namespace SnakeLadderGame
         {
             Console.WriteLine("Welcome to Snake Ladder Game");
             SnakeLadderOperations snakeLadderOperations = new SnakeLadderOperations();
-
-            int diceValue = snakeLadderOperations.DiceRoll();
-            snakeLadderOperations.GamePlay(diceValue);
+            snakeLadderOperations.GamePlay();
         }
     }
 }
